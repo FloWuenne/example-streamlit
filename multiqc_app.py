@@ -35,7 +35,7 @@ st.title("MultiQC Streamlit App")
 
 
 # Get some data
-def download_and_unzip(url, extract_to="."):
+def download_and_unzip(url, extract_to="/test_data"):
     http_response = urlopen(url)
     zipfile = ZipFile(BytesIO(http_response.read()))
     zipfile.extractall(path=extract_to)
@@ -51,7 +51,7 @@ data_load_state.text("Loading example logs...done!")
 
 # Parse logs
 data_parse_state = st.text("Parsing logs...")
-multiqc.parse_logs("./data")
+multiqc.parse_logs("/test_data/data")
 data_parse_state.text("Parsing logs...done!")
 
 with st.expander("Parsed data details"):
